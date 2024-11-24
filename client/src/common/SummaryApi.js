@@ -22,6 +22,14 @@ const SummaryApi={
     resetPassword:{
         url:'/api/user/reset-password',
         method:'PUT',
+    },
+    refreshToken:{
+        url:'/api/user/refresh-token',
+        method:'POST',
+    },
+    userDatils:{
+        url:'/api/user/user-details',
+        method:'GET',
     }
 
 }

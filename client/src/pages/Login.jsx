@@ -41,12 +41,12 @@ try{
   })
   if(response.data.error){
     toast.error(response.data.message)
-    localStorage.setItem('accesstoken',response.data.data.accesstoken)
-    localStorage.setItem('refreshToken',response.data.data.refreshToken)
+   
   }
   if(response.data.success){
     toast.success(response.data.message)
-
+    localStorage.setItem('accessToken',response.data.data.accessToken)
+    localStorage.setItem('refreshToken',response.data.data.refreshToken)
     setData({
       
       email:"",
