@@ -10,6 +10,7 @@ import { VscTriangleDown } from "react-icons/vsc";
 import { VscTriangleUp } from "react-icons/vsc";
 import UserMenu from './UserMenu';
 
+
 const Header = () => {
   const [isMobile] = useMobile()
   const location = useLocation()
@@ -17,12 +18,24 @@ const Header = () => {
   const user = useSelector((state) => state?.user)
   const [openUserMenu, setOpenUserMenu] = useState(false)
 
-  console.log('user stroe', user)
   const isSearchPage = location.pathname === "/search"
   const redirectToLoginPage = () => {
     navigate("/login")
 
   }
+  const handleCloseUserMenu=()=>{
+    setOpenUserMenu(false)
+
+  }
+  const handleMobileuser=()=>{
+    if(!user._id){
+      navigate("/login")
+      return
+    }
+    navigate("/account")
+
+  }
+
   return (
     <header className='h-28 lg:h-20 lg:shadow-md sticky top-0 z-50 bg-gray-50 flex  flex-col justify-center gap-1 '>
       {
@@ -49,13 +62,13 @@ const Header = () => {
             </div>
             {/* login or cart */}
             <div className=''>
-              <button className='text-neutral-600 lg:hidden'>
+              <button onClick={handleMobileuser} className='text-neutral-600 lg:hidden'>
                 <FaCircleUser size={30} />
               </button>
               {/* dasktop login */}
               <div className='hidden lg:flex items-center gap-8 '>
                 {
-                  user ? (
+                  user?._id? (
                     <div className='relative'>
                       <div  onClick={()=>setOpenUserMenu(preve=>!preve)} className='flex items-center gap-2 cursor-pointer select-none'>
                         <p>Account</p>
@@ -65,9 +78,6 @@ const Header = () => {
                           )
                         }
                         
-                        
-                        
-
                       </div>
 
                       {
@@ -75,7 +85,7 @@ const Header = () => {
                           <div className='absolute  top-11 lg:shadow-md right-0'>
                     
                           <div className='bg-white rounded p-4 min-w-52 '>
-                            <UserMenu/>
+                            <UserMenu close={handleCloseUserMenu} />
 
                             </div>
                         </div>

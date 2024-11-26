@@ -30,6 +30,18 @@ const SummaryApi={
     userDatils:{
         url:'/api/user/user-details',
         method:'GET',
+    },
+    logout :{
+        url:'/api/user/logout',
+        method:'GET',
+    },
+    uploadAvatar:{
+        url:'/api/user/upload-avatar',
+        method:'PUT',
+    },
+    updateUser:{
+        url:'/api/user/update-user',
+        method:'PUT',
     }
 
 }

@@ -417,7 +417,7 @@ export const resetPassword = async (req, res) => {
 //refresh token ctroller
 export const refreshToken = async (req, res) => {
     try {
-        const refreshToken = req.cookies.refreshToken || req?.header?.authorization?.split(" ")[1];
+        const refreshToken = req.cookies.refreshToken || req?.headers?.authorization?.split(" ")[1];
         if (!refreshToken) {
             return res.status(401).json({
                 message: 'Invalid token Login Please!!',
