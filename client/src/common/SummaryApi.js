@@ -42,6 +42,18 @@ const SummaryApi={
     updateUser:{
         url:'/api/user/update-user',
         method:'PUT',
+    },
+    addCategory:{
+        url:'/api/category/add-category',
+        method:'POST',
+    },
+    uploadImage:{
+        url:'/api/file/upload',
+        method:'POST',
+    },
+    getCategory:{
+        url:'/api/category/get-category',
+        method:'GET',
     }
 
 }
