@@ -115,8 +115,9 @@ if(responseData.success){
         <div className='grid gap-1
         '>
           <label className='' htmlFor='email'>Email</label>
+          <div className='bg-blue-50 p-2 border  flex items-center rounded-lg'>
           <input type="email" 
-          className='p-2 bg-blue-50 outline-none border focus-within:border-primary-200 rounded-lg'
+          className=' bg-blue-50 outline-none w-5/6 '
           value={userData.email}
           name="email"
           id='email'
@@ -124,7 +125,14 @@ if(responseData.success){
           placeholder='Enter Your email'
 required
 readOnly // Makes the email field non-editable
+
            />
+           <div>
+            <span className='font-light text-gray-400'>Not Editable</span>
+           </div>
+
+          </div>
+           
         </div>
         <div className='grid gap-1'>
           <label className='' htmlFor='mobile'>Mobile No.</label>

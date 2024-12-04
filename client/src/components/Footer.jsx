@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import logo from '../assets/images/logo1.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -25,9 +26,9 @@ const Footer = () => {
               Services
             </a>
             
-            <a href="#" className="hover:text-white text-sm">
+            <Link to={"/dashboard/category"} className="hover:text-white text-sm">
               Blog
-            </a>
+            </Link>
             <a href="#" className="hover:text-white text-sm">
               Contact
             </a>

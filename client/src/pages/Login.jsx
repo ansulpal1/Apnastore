@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import toast from 'react-hot-toast';
@@ -6,11 +6,16 @@ import toast from 'react-hot-toast';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import AxiosToastError from '../utils/AxiosToastError';
-import { Link, Links, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import fetchUserDetails from '../utils/fetchUserDetails';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserDetails } from '../store/userSlice';
 const Login = () => {
+  const user = useSelector((state) => state.user)
+  const navigate= useNavigate();
+ 
+ 
+  
 const [data,setData]=useState({
  
   email:"",
@@ -18,7 +23,8 @@ const [data,setData]=useState({
  
 })
 const [showPassword, setShowPassword] = useState(false);
-const navigate= useNavigate();
+
+
 const dispatch = useDispatch()
 const handleChange=(e)=>{
   const {name, value }= e.target
@@ -63,10 +69,22 @@ try{
   }
 }catch(error){
   AxiosToastError(error)
+ 
 }
 
 
 }
+
+
+useEffect(()=>{
+  if(user?.email ){
+    navigate("/")
+
+  }
+ 
+  
+
+},[user?.email])
 
   return (
     <section className='w-full container mx-auto px-4'>

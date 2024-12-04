@@ -6,10 +6,11 @@ import SummaryApi from '../common/SummaryApi';
 import toast from 'react-hot-toast'
 
 import AxiosToastError from '../utils/AxiosToastError';
-const UploadCategory = ({close,fetchData}) => {
+const EditCategory = ({close,fetchData ,data:CategoryData}) => {
     const [data,setData]=useState({
-        name: "",
-        image:""
+        _id:CategoryData._id,
+        name: CategoryData.name,
+        image:CategoryData.image
     })
 
     const handleOnChange=(e)=>{
@@ -27,7 +28,7 @@ const UploadCategory = ({close,fetchData}) => {
         try{
             setLoading(true)
             const response=await Axios({
-                ...SummaryApi.addCategory,
+                ...SummaryApi.updateCategory,
                 data:data
             })
             const {data:responseData}=response
@@ -61,10 +62,10 @@ setData((preve)=>{
 
     }
   return (
-    <section className='fixed top-0 left-0 right-0 bottom-0 p-4 z-50 bg-neutral-800 bg-opacity-60 flex items-center justify-center '>
+    <section className='fixed top-0 left-0 right-0 bottom-0 p-4 bg-neutral-800 bg-opacity-60 flex items-center justify-center  z-50'>
 <div className='bg-white max-w-2xl w-full p-4 rounded-lg'>
 <div className='flex'>
-    <h1 className='font-semibold'>Category</h1>
+    <h1 className='font-semibold'> Update Category</h1>
 <button onClick={()=>{close()}} className=" w-fit block ml-auto " >
 <IoClose size={25}  />
 </button>
@@ -121,11 +122,11 @@ setData((preve)=>{
     ${data.name && data.image ?" bg-green-500":"bg-gray-500"}
      text-sm border border-gray-500 text-white px-4 py-2 rounded-md font-normal 
     `
-}>ADD Category</button>
+}>Update Category</button>
 </form>
 </div>
     </section>
   )
 }
 
-export default UploadCategory
+export default EditCategory
